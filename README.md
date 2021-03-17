@@ -1,2 +1,5 @@
-# project_euler
-My solution for Project Euler problems
+# Project Euler
+
+This repository contains my solutions to [Project Euler](https://projecteuler.net/) problems.
+
+*Currently, the solutions are only in Python.*
