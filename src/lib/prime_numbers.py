@@ -40,14 +40,12 @@ class Prime_numbers:
         Return True if number is a prime number
         """
         if number > self.max_primes_computed:
-            if self.max_primes_computed % 2 == 0:
-                self.max_primes_computed -= 1
 
-            for i in range(self.max_primes_computed, number+1, 2):
+            for i in range(self.max_primes_computed + 2, number+1, 2):
                 if(self.__test_prime(i)):
                     self.primes.append(i)
 
-            self.max_primes_computed = number
+            self.max_primes_computed = self.primes[-1]
 
         return number in self.primes
 
@@ -65,6 +63,9 @@ class Prime_numbers:
         # number previously computed
         for nb in self.primes:
             if(nb * nb > number):
+                if self.max_primes_computed < number:
+                    self.max_primes_computed = number
+                self.primes.append(number)
                 return True
             elif (number % nb == 0):
                 return False
@@ -72,22 +73,24 @@ class Prime_numbers:
 
         # If there no divisor was found, test with new divisors
         # until new * new > number
-        new = self.__next()
+        new = self.next()
 
         while new * new <= number:
             if (number % new == 0):
                 return False
 
-            new = self.__next()
+            new = self.next()
+
+        if self.max_primes_computed < number:
+                    self.max_primes_computed = number
+        self.primes.append(number)
 
         return True
 
-    def __next(self):
+    def next(self):
         """
         Find the next prime number following max_primes_computed
         """
-        if self.max_primes_computed % 2 == 0:
-                self.max_primes_computed -= 1
 
         # The candidate for the next prime number
         to_test = self.max_primes_computed + 2
@@ -108,25 +111,49 @@ if __name__ == '__main__':
     # Tests for compute_prime_number_until function
     print("Testing compute_prime_number_until function... ", end="")
     primes = Prime_numbers()
+    assert(primes.compute_prime_number_until(5))
+    assert(len(primes.primes) == 3)
+    assert(primes.max_primes_computed == 5)
+
+    primes = Prime_numbers()
     assert(primes.compute_prime_number_until(6689))
+    assert(primes.max_primes_computed == 6689)
     assert(primes.compute_prime_number_until(6691))
+    assert(primes.max_primes_computed == 6691)
     assert(primes.compute_prime_number_until(11))
     assert(primes.compute_prime_number_until(199))
     assert(not primes.compute_prime_number_until(4))
     assert(not primes.compute_prime_number_until(69))
     assert(not primes.compute_prime_number_until(6881))
     assert(primes.compute_prime_number_until(6883))
+
+    primes = Prime_numbers()
+    assert(primes.compute_prime_number_until(199))
+    assert(199 in primes.primes)
+    assert(primes.max_primes_computed == 199)
     print("OK")
 
     # Tests for is_prime function
     print("Testing is_prime_number function... ", end="")
     primes = Prime_numbers()
+    assert(primes.is_prime(5))
+    assert(len(primes.primes) == 3)
+    assert(primes.max_primes_computed == 5)
+
+    primes = Prime_numbers()
     assert(not primes.is_prime(6881))
     assert(primes.is_prime(6689))
+    assert(primes.max_primes_computed == 6689)
     assert(primes.is_prime(6691))
+    assert(primes.max_primes_computed == 6691)
     assert(primes.is_prime(11))
     assert(primes.is_prime(199))
     assert(not primes.is_prime(4))
     assert(not primes.is_prime(69))
     assert(primes.is_prime(6883))
+
+    primes = Prime_numbers()
+    assert(primes.is_prime(199))
+    assert(199 in primes.primes)
+    assert(primes.max_primes_computed == 199)
     print("OK")

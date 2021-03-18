@@ -9,9 +9,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "../../../lib"))
 
 from prime_numbers import Prime_numbers
 
-primes = Prime_numbers()
-
-
 def compute_largest_prime_factor(number):
     """
     Compute the largest prime factor of the number
