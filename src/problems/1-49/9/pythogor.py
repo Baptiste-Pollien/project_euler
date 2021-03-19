@@ -20,7 +20,7 @@ def find_pythagorean_triplet_1000():
     for a in range(400):
         for b in range(a, 400):
             c = int(sqrt(a*a + b*b)) 
-            
+
             if (a*a + b*b == c*c) and (a + b + c == 1000):
                return a*b*c
 

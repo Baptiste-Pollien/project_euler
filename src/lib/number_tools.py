@@ -20,7 +20,7 @@ def convert_tab_int(tab):
 
     return number
 
-def cc_int_tab(nb):
+def convert_int_tab(nb):
     """
     Convert an integer to a tab of numbers
     """

@@ -104,6 +104,16 @@ class Prime_numbers:
 
         return to_test
 
+    def it_primes(self):
+        """
+        Iterate on all prime numbers
+        """
+        for prime in self.primes:
+            yield prime
+
+        while True:
+             yield self.next()
+
 
 if __name__ == '__main__':
     # If main, tests are launch
