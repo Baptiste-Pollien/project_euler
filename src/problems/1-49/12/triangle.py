@@ -27,6 +27,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "../../../lib"))
 from prime_numbers import Prime_numbers
 from functools import reduce
 
+# Global variable to compute prime numbers
 primes = Prime_numbers()
 
 def nb_divisors(nb):
