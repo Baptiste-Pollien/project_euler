@@ -58,18 +58,21 @@ class Prime_numbers:
     def is_prime(self, number):
         """
         Test if number is a prime number
+        This function offers no guarantee for the update of the
+        max_prime_computed variable
         """
+        # If number is less or equal of max_primes_computed
+        # the result is already computed
+        if number <= self.max_primes_computed:
+            return number in self.primes
+
         # Test if the number is divisible by one prime
         # number previously computed
         for nb in self.primes:
             if(nb * nb > number):
-                if self.max_primes_computed < number:
-                    self.max_primes_computed = number
-                self.primes.append(number)
                 return True
             elif (number % nb == 0):
                 return False
-
 
         # If there no divisor was found, test with new divisors
         # until new * new > number
@@ -80,10 +83,6 @@ class Prime_numbers:
                 return False
 
             new = self.next()
-
-        if self.max_primes_computed < number:
-                    self.max_primes_computed = number
-        self.primes.append(number)
 
         return True
 
@@ -147,15 +146,11 @@ if __name__ == '__main__':
     print("Testing is_prime_number function... ", end="")
     primes = Prime_numbers()
     assert(primes.is_prime(5))
-    assert(len(primes.primes) == 3)
-    assert(primes.max_primes_computed == 5)
 
     primes = Prime_numbers()
     assert(not primes.is_prime(6881))
     assert(primes.is_prime(6689))
-    assert(primes.max_primes_computed == 6689)
     assert(primes.is_prime(6691))
-    assert(primes.max_primes_computed == 6691)
     assert(primes.is_prime(11))
     assert(primes.is_prime(199))
     assert(not primes.is_prime(4))
@@ -164,6 +159,15 @@ if __name__ == '__main__':
 
     primes = Prime_numbers()
     assert(primes.is_prime(199))
-    assert(199 in primes.primes)
-    assert(primes.max_primes_computed == 199)
+
+    primes = Prime_numbers()
+    assert(not primes.is_prime(1))
+    assert(not primes.is_prime(6881))
+    assert(primes.is_prime(6689))
+    assert(primes.is_prime(6691))
+    assert(primes.is_prime(11))
+    assert(primes.is_prime(199))
+    assert(not primes.is_prime(4))
+    assert(not primes.is_prime(69))
+    assert(primes.is_prime(6883))
     print("OK")

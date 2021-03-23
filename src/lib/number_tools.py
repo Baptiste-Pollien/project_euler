@@ -26,15 +26,15 @@ def convert_int_tab(nb):
     """
     return [int(char) for char in str(nb)]
 
-def gen_comb_pandigital(n):
+def gen_comb_pandigital(n, start=1):
     """
-    Generate all combinations of pandigital with digits from 1 to n
+    Generate all combinations of pandigital with digits from start to n
     """
     assert (n >= 1)
 
     all_combi = [[]]
 
-    for i in range(1, n + 1):
+    for i in range(start, n + 1):
         # Creating new combination with i as new digit
         new_combi = []
 
@@ -50,3 +50,8 @@ def gen_comb_pandigital(n):
         all_combi = new_combi
 
     return all_combi
+
+if __name__ == '__main__':
+    print("Testing gen_comb_pandigital function... ", end="")
+    assert(convert_int_tab(7652413) in gen_comb_pandigital(7))
+    print("OK")

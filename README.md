@@ -16,6 +16,8 @@ The following command will compute the solution for the n th problem:
 
 Note: For `n = 0`n the script will launch the tests of the library.
 
+Note2: For `0 < n < 10`, the command is `./run.sh 0n` (a 0 must be added before the number of the problem you want to compute)
+
 ## Repository organisation
 
 - `src/problems`: contains all the python files to resolve the problems.
