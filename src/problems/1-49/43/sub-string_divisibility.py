@@ -17,7 +17,7 @@ Find the sum of all 0 to 9 pandigital numbers with this property.
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../../../lib"))
 
-from number_tools import convert_tab_int, convert_int_tab, gen_comb_pandigital
+from number_tools import convert_tab_int, gen_comb_pandigital
 
 def test_property(tab):
     """
