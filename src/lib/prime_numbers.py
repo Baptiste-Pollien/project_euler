@@ -159,6 +159,12 @@ if __name__ == '__main__':
 
     primes = Prime_numbers()
     assert(primes.is_prime(199))
+    assert(not primes.is_prime(0))
+    assert(not primes.is_prime(1))
+
+    primes = Prime_numbers()
+    assert(not primes.is_prime(0))
+    assert(not primes.is_prime(1))
 
     primes = Prime_numbers()
     assert(not primes.is_prime(1))

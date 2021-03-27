@@ -25,7 +25,7 @@ def odd_compositite_iterator():
     """
     Iterator on all odd composite numbers
     """
-    odd = 1
+    odd = 9
 
     # For all odd number
     while True:
@@ -59,7 +59,7 @@ def find_smallest_conj_goldbach():
     as the sum of a prime and twice a square
     """
     for number in odd_compositite_iterator():
-        if not is_sum_prime_twice_square()
+        if not is_sum_prime_twice_square(number):
             return number
 
 
