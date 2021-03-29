@@ -113,6 +113,27 @@ class Prime_numbers:
         while True:
              yield self.next()
 
+    def set_primes_factors(self, number):
+        """
+        Compute the set of all distinct primes 
+        factor
+        """
+        if self.is_prime(number):
+            return set([number])
+
+        set_factors = set()
+        it_primes   = iter(self.it_primes())
+
+        while number != 1:
+            next_p = it_primes.__next__()
+
+            while number % next_p == 0:
+                number //= next_p
+                set_factors.add(next_p)
+
+        return set_factors
+
+
 
 if __name__ == '__main__':
     # If main, tests are launch
@@ -176,4 +197,12 @@ if __name__ == '__main__':
     assert(not primes.is_prime(4))
     assert(not primes.is_prime(69))
     assert(primes.is_prime(6883))
+
+    primes = Prime_numbers()
+    assert(primes.set_primes_factors(6689) == set([6689]))
+    assert(primes.set_primes_factors(14)   == set([2, 7]))
+    assert(primes.set_primes_factors(15)   == set([3, 5]))
+    assert(primes.set_primes_factors(644)  == set([2, 7, 23]))
+    assert(primes.set_primes_factors(645)  == set([3, 5, 43]))
+    assert(primes.set_primes_factors(646)  == set([2, 17, 19]))
     print("OK")
