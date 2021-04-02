@@ -89,30 +89,26 @@ def gen_initial_sequence(n):
     # Convert the tab of digit to integer
     return reduce(lambda l, y: l + [convert_tab_int(y)], list_combi, [])
 
-def find_sequence(n, delta):
+def find_sequence(n):
     """
     Find sequence of 3 terms which each of the terms 
-    increases by delta, and:
+    increases a delta, and:
     - each of the three terms are prime,
     - each of the n-digit numbers are permutations of one another
     """
     for init_sequence in gen_initial_sequence(n):
         diff_combi = diff_prime_combi(init_sequence)
-        if delta in diff_combi and len(diff_combi[delta]) == 3:
-            list_res = [convert_int_tab(nb) for nb in diff_combi[delta]]
-            list_res.sort()
-            list_res = list_res[0] + list_res[1] + list_res[2]
 
-            print(convert_tab_int(list_res))
+        for delta in diff_combi:
+            if len(diff_combi[delta]) == 3:
+                list_res = [convert_int_tab(nb) for nb in diff_combi[delta]]
+                list_res.sort()
+                list_res = list_res[0] + list_res[1] + list_res[2]
 
-def test_all_delta_4_digits():
-    """
-    Test all delta value in for the find_sequence function
-    for 4 digits value
-    """
-    for delta in range(1, 4384):
-        find_sequence(4, delta)
+                print(delta, convert_tab_int(list_res))
+
+
 
 if __name__ == '__main__':
-    res = test_all_delta_4_digits()
+    res = find_sequence(4)
     print(res)
