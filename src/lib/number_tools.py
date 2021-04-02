@@ -6,6 +6,7 @@ Tool functions to work with numbers :
 - gen_comb_pandigital: Generate all combinations of pandigital 
                        with digits from 1 to n
 """
+from functools import reduce
 
 def convert_tab_int(tab):
     """
@@ -51,7 +52,74 @@ def gen_comb_pandigital(n, start=1):
 
     return all_combi
 
+def gen_comb_number_tab(n):
+    """
+    Generate all combinations from the digits of n
+    The result number are represented as tab of digits
+    """
+    assert (n >= 1)
+    list_possible_digits = convert_int_tab(n)
+
+    all_combi = [[]]
+
+    for i in range(len(list_possible_digits)):
+        # Creating new combination with i as new digit
+        new_combi = []
+
+        # For all previous pandigital numbers
+        for combi in all_combi:
+            # For all positions
+            for pos in range(len(combi) + 1):
+                # Create a new pandigital number
+                tmp = list(combi)
+                tmp.insert(pos, list_possible_digits[i])
+                new_combi.append(tmp)
+
+        all_combi = new_combi
+
+    return all_combi
+
+def gen_comb_number(n):
+    """
+    Generate all combinations from the digits of n
+    """
+    list_res = gen_comb_number_tab(n)
+    return reduce(lambda l, y: l + [convert_tab_int(y)], list_res, [])
+
+
 if __name__ == '__main__':
+    print("Testing convert_tab_int function... ", end="")
+    assert(convert_tab_int([1]) == 1)
+    assert(convert_tab_int([1, 2]) == 12)
+    assert(convert_tab_int([1, 2, 3]) == 123)
+    assert(convert_tab_int([1, 1, 1]) == 111)
+    assert(convert_tab_int([0, 1, 1]) == 11)
+    assert(convert_tab_int([0, 1, 0]) == 10)
+    print("OK")
+
+    print("Testing convert_int_tab function... ", end="")
+    assert(convert_int_tab(1) == [1])
+    assert(convert_int_tab(10) == [1, 0])
+    assert(convert_int_tab(123) == [1, 2, 3])
+    assert(convert_int_tab(1111) == [1, 1, 1, 1])
+    print("OK")
+
     print("Testing gen_comb_pandigital function... ", end="")
     assert(convert_int_tab(7652413) in gen_comb_pandigital(7))
+    print("OK")
+
+    print("Testing gen_comb_number_tab function... ", end="")
+    list_res = [[1, 2], [2, 1]]
+    for tab_number in gen_comb_number_tab(12):
+        assert(tab_number in list_res)
+        list_res.remove(tab_number)
+    assert(list_res == [])
+    print("OK")
+
+    print("Testing gen_comb_number function... ", end="")
+    list_res = [123, 132, 213, 231, 312, 321]
+    for number in gen_comb_number(123):
+        assert(number in list_res)
+        list_res.remove(number)
+    assert(list_res == [])
     print("OK")
