@@ -70,7 +70,7 @@ def gen_comb_number_tab(n):
         for combi in all_combi:
             # For all positions
             for pos in range(len(combi) + 1):
-                # Create a new pandigital number
+                # Create a new number
                 tmp = list(combi)
                 tmp.insert(pos, list_possible_digits[i])
                 new_combi.append(tmp)
@@ -85,6 +85,18 @@ def gen_comb_number(n):
     """
     list_res = gen_comb_number_tab(n)
     return reduce(lambda l, y: l + [convert_tab_int(y)], list_res, [])
+
+def is_permutation(nb1, nb2):
+    """
+    Return true if nb1 is a permutation of nb2
+    """
+    tab_nb2 = convert_int_tab(nb2)
+
+    for d in convert_int_tab(nb1):
+        if d in tab_nb2:
+            tab_nb2.remove(d)
+
+    return tab_nb2 == []
 
 
 if __name__ == '__main__':
@@ -122,4 +134,15 @@ if __name__ == '__main__':
         assert(number in list_res)
         list_res.remove(number)
     assert(list_res == [])
+    print("OK")
+
+    print("Testing is_permutation function...", end="")
+    assert(is_permutation(123, 231))
+    assert(is_permutation(345, 543))
+    assert(is_permutation(12345, 54321))
+    assert(is_permutation(3434, 4343))
+    assert(not is_permutation(123, 331))
+    assert(not is_permutation(123, 232))
+    assert(not is_permutation(123, 234))
+    assert(not is_permutation(123, 1312))
     print("OK")
