@@ -82,6 +82,8 @@ if __name__ == "__main__":
     nb_python       = 0
     sum_time_python = 0
     sum_time_rust   = 0
+    min_python_time = -1
+    min_python_nb   = -1
 
     for (nb_pb, times) in results.items():
         if times[0] != -1:
@@ -91,7 +93,12 @@ if __name__ == "__main__":
         if times[1] != -1:
             sum_time_rust += times[1]
             nb_rust       += 1
-    
+
+        if times[0] != -1 and times[1] != -1:
+            percent_decrease = 100.0 * (times[0] - times[1]) / times[0]
+            print("Problem {} : {}s (Python), {}s (Rust), {}%"\
+                    .format(nb_pb, times[0], times[1], percent_decrease))
+
     # Display results
     print("{} problems resolved correctly".format(len(results)))
     print("")
