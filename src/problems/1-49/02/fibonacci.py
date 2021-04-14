@@ -18,7 +18,7 @@ def fibonacci_even(n):
     term_n_1 = 2
     sum_fib  = 0
 
-    while (term_n_1 < 4000000):
+    while (term_n_1 < n):
         if (term_n_1 % 2 == 0):
             sum_fib += term_n_1
 
