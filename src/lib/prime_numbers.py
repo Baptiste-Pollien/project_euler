@@ -95,7 +95,7 @@ class Prime_numbers:
         to_test = self.max_primes_computed + 2
 
         while not self.__test_prime(to_test):
-            to_test +=2
+            to_test += 2
 
         # Update the attibuts of the object
         self.primes.append(to_test)

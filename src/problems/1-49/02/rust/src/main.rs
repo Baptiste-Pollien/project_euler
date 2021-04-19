@@ -1,6 +1,5 @@
+/// Compute the sum of even fibonnaci terms less than n
 fn fibonacci_even(n: u32) -> u32 {
-    // Compute the sum of even fibonnaci terms less than n
-
     let mut term_n   : u32 = 1;
     let mut term_n_1 : u32 = 2;
     let mut sum_fib  : u32 = 0;

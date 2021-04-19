@@ -18,6 +18,10 @@ STOP_FC=0
 echo "Bench launched"
 
 for folder in $(ls $PATH_PBS); do
+    if [ ! -d $PATH_PBS/$folder ]; then 
+        continue
+    fi
+
     for problem in $(ls $PATH_PBS/$folder); do
         echo -n "Running problem $problem..."
 

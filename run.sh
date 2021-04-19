@@ -26,7 +26,7 @@ case $key in
     echo "-p --python         Run the python version to compute the result"
     echo "-r --rust           Run the rust version to compute the result"
     echo ""
-    echo "Bench & Test"
+    echo "Bench & Test:"
     echo "-t --test           Launch test for the tools used to resolve the problems"
     echo "-b --bench          Run and display the results"
     echo "-d --bench-display  Display the result. If the results are not computed"
