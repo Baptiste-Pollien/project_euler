@@ -23,7 +23,7 @@ case $key in
     echo "Compute the n th problem of Project Euler"
     echo ""
     echo "Options:"
-    echo "-p --python         Run the python version to compute the result"
+    echo "-p --python         Run the python version to compute the result (default)"
     echo "-r --rust           Run the rust version to compute the result"
     echo ""
     echo "Bench & Test:"
