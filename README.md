@@ -11,14 +11,14 @@ Use the `run.sh` script to compute the solution of a problem.
 
 The following command will compute the solution for the n th problem:
 
-```
+```bash
 ./run.sh n
 ```
 
 By default, the python solution is used. To run the Rust implementation,
 use the command:
 
-```
+```bash
 ./run.sh -r n
 ```
 
@@ -34,7 +34,7 @@ comparison between Python and Rust implementation.
 
 To run the bench and see the result, use the command:
 
-```
+```bash
 ./run.sh -b
 ```
 
