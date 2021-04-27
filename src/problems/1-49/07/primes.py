@@ -13,7 +13,7 @@ def find_n_th_primes(n):
     """
     Find the n th prime number
     """
-    primes = Prime_numbers()
+    primes    = Prime_numbers()
     nb_primes = len(primes.primes)
 
     for _ in range(nb_primes, n):

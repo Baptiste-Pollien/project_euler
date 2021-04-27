@@ -28,7 +28,7 @@ pub mod prime_numbers {
         }
 
         /// Find the next prime number following max_primes_computed
-        fn next(&mut self) -> u64 {
+        pub fn next(&mut self) -> u64 {
             // The candidate for the next prime number
             let mut to_test = self.max_primes_computed + 2;
 
