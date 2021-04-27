@@ -18,13 +18,12 @@ def compute_diff_square_sum(n):
     Compute the difference between the sum of the squares of the first one
     n natural numbers and the square of the sum.
     """
-
     sum_square = 0
-    sum_int = 0
+    sum_int    = 0
 
     for i in range(n + 1):
         sum_square += i*i
-        sum_int += i
+        sum_int    += i
 
     return (sum_int * sum_int - sum_square)
 
