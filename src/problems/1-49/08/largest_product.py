@@ -48,7 +48,7 @@ nb_to_test = "73167176531330624919225119674426574742355349194934\
 
 def find_adjacent_digits_product(number, nb_digit):
     """
-    Find the nb_digit adjacent digits in the number 
+    Find the nb_digit adjacent digits in the number
     that have the greatest productan return the value.
     """
     max_prod = 0
